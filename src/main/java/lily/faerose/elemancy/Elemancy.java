@@ -1,7 +1,15 @@
 package lily.faerose.elemancy;
 
+import java.io.File;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import api.planets;
+import bakery.Strings;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import net.minecraft.client.Minecraft;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -12,8 +20,6 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Strings.MODID)
@@ -21,8 +27,13 @@ public class Elemancy
 {
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
-  
-    public Elemancy() {
+public static Minecraft game;
+
+	public static Logger getLogger() {
+		return LOGGER;
+	}
+
+	public Elemancy() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -39,15 +50,13 @@ public class Elemancy
     private void setup(final FMLCommonSetupEvent event)
     {
         // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
         LOGGER.info("FIRST Discovery unlocked");
     }
 
-    @SuppressWarnings("resource")
-	private void doClientStuff(final FMLClientSetupEvent event) {
+    private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
+    	game = event.getMinecraftSupplier().get();
+        LOGGER.info("Got game settings {}", game.gameDirectory);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
@@ -68,6 +77,7 @@ public class Elemancy
     public void onServerStarting(FMLServerStartingEvent event) {
         // do something when the server starts
         LOGGER.info("HELLO from server starting");
+        
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
@@ -76,8 +86,30 @@ public class Elemancy
     public static class RegistryEvents {
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
-            LOGGER.info("HELLO from Register Block");
+            LOGGER.info("SECOND Discovery unlocked");
         }
+        
+        @SuppressWarnings("resource")
+		@SubscribeEvent
+        public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
+        	
+            LOGGER.info(planets.GAIA);
+            LOGGER.info("phase ITEM");
+            File file = Minecraft.getInstance().gameDirectory;
+            LOGGER.info(file.getAbsolutePath());
+            String path = file.getAbsolutePath() + "./../";
+            LOGGER.debug(path);
+            file.
+            file = new File(path).getAbsoluteFile();
+            LOGGER.info(file.getAbsolutePath());
+             }
+
+        
+        public void onServerStarting(FMLServerStartingEvent event) {
+            // do something when the server starts
+            LOGGER.info("HELLO from server starting");
+
+    }
+
     }
 }
