@@ -1,11 +1,14 @@
 package lily.faerose.elemancy;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import api.planets;
+import bakery.Getpath;
 import bakery.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -89,19 +92,16 @@ public static Minecraft game;
             LOGGER.info("SECOND Discovery unlocked");
         }
         
-        @SuppressWarnings("resource")
-		@SubscribeEvent
+        @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
         	
             LOGGER.info(planets.GAIA);
             LOGGER.info("phase ITEM");
-            File file = Minecraft.getInstance().gameDirectory;
-            LOGGER.info(file.getAbsolutePath());
-            String path = file.getAbsolutePath() + "./../";
-            LOGGER.debug(path);
-            file.
-            file = new File(path).getAbsoluteFile();
-            LOGGER.info(file.getAbsolutePath());
+            File file = Getpath.SOURCE.get();
+            LOGGER.info(file.getAbsolutePath() + " "+file.canWrite());
+            
+            Path drive = Paths.get(file.getAbsolutePath(), "main");
+            LOGGER.info(drive.toFile().canWrite());
              }
 
         
