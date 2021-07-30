@@ -1,0 +1,29 @@
+{
+    "item.elemancy.zincite": "zincite",
+    "item.elemancy.ingots": "Brass Ingot",
+	    "item.elemancy.amber": "Amber",
+		"item.elemancy.magic.powder": "MagicPowder",
+		"item.elemancy.bone.crusher": "Bone Crusher",
+    "elemancy.magic": "Magic Power",
+    "block.elemancy.brass.block": "Block of Brass",
+    "block.mytutorial.fancyblock": "",
+    "block.mytutorial.complex_multipart": "",
+	"elemancy.capacity": "Ether Capacity",
+	"elemancy.Armor": "Runic Armor",
+	"elemancy.Recharge": "Recharge Rate",
+"elemancy.resistance": "ShadowRestance",
+"elemancy.purification": "Purification Strength",
+    "_comment": "",
+    "itemGroup.elemancy": "elemancy",
+
+    "message.mytutorial.command.test": "",
+    "message.firstblock": "",
+    "message.magicblock": "",
+    "message.fancyblock": "",
+    "message.complex_multipart": "",
+    "message.firstitem": "",
+    "message.increase_charge": "",
+
+    "screen.mytutorial.firstblock": "",
+    "screen.mytutorial.spawn": ""
+}

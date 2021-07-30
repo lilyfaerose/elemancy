@@ -1,0 +1,7 @@
+{
+  "type": "elemancy:transmutation",
+  "result": "elemancy:zincite",
+      "input": "minecraft:iron_ore",
+
+	  "amount": 2
+    }
