@@ -1,0 +1,7 @@
+{
+  "type": "elemancy:transmutation",
+  "result": "elemancy:amber",
+      "input": "minecraft:oak_log",
+
+	  "count": 20
+    }

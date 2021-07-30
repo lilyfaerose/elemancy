@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "elemancy",
+  "pattern": [
+    "xxx",
+    "x#x",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "tag": "forge:stone"
+    },
+    "#": {
+      "tag": "forge:dyes/red"
+    }
+  },
+  "result": {
+    "item": "minecraft:red_mushroom_block"
+  }
+}
